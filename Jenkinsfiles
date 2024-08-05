@@ -13,4 +13,22 @@ pipeline {
 
     stage("Checkout from SCM"){
             stages {
-            git branch 'main', credentailsId: 'github', url: '
+            git branch 'main', credentailsId: 'github', url: 'https://github.com/Lokanathreddy11/register-app.git'
+            }
+    }
+
+    stages("Build Application"){
+            steps {
+                 sh :mvn clean package"
+            }
+    }
+
+    stages("Test Application"){
+            steps {
+                 sh :mvn test"
+            }
+    }
+  }
+}
+
+

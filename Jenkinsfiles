@@ -5,30 +5,30 @@ pipeline {
     maven 'maven3'
   }
   stages{
-    stage("Cleanup Workspace"){
+      stage("Cleanup Workspace"){
             steps {
             cleanWs()
             }
-    }
+      }
 
-    stage("Checkout from SCM"){
+      stage("Checkout from SCM"){
             stages {
-            git branch 'main', credentailsId: 'github', url: 'https://github.com/Lokanathreddy11/register-app.git'
+                 git branch 'main', credentailsId: 'github', url: 'https://github.com/Lokanathreddy11/register-app.git'
             }
-    }
+      }
 
-    stages("Build Application"){
+      stages("Build Application"){
             steps {
-                 sh :mvn clean package"
+                sh :mvn clean package"
             }
-    }
+      }
 
-    stages("Test Application"){
+      stages("Test Application"){
             steps {
                  sh :mvn test"
             }
-    }
-  }
+      }
+   }
 }
 
 
